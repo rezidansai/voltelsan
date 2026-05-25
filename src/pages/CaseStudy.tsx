@@ -7,6 +7,7 @@ import watchApGreen from "@/assets/watch_ap_green.png";
 import watchRmBlue from "@/assets/watch_rm_blue.png";
 import watchRmDark from "@/assets/watch_rm_dark.png";
 import watchApWhite from "@/assets/watch_ap_white.png";
+import watchCrmPanel from "@/assets/project-watch-crm.png";
 
 const watches = [
   {
@@ -412,6 +413,51 @@ const CaseStudy = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Dedicated CRM Panel Showcase Section */}
+            <div className="mt-24 pt-20 border-t border-white/5 relative">
+              <div className="grid gap-12 lg:grid-cols-12 items-center">
+                {/* Left: CRM Description & Explanations */}
+                <div className="lg:col-span-5 relative z-10">
+                  <span className="text-[9px] uppercase tracking-[0.3em] font-semibold text-[#C5A572] mb-3 block">
+                    Proprietary Back-End System
+                  </span>
+                  <h3 className="display-font text-3xl font-semibold tracking-tight text-white mb-6">
+                    KBCHRONO Bespoke CRM Panel
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/60 mb-6 font-light font-sans">
+                    KBCHRONO için özel olarak sıfırdan tasarlanan ve geliştirilen **Merkezi CRM Paneli**, lüks saat envanterinin ve koleksiyonların tüm yönetim süreçlerini tek bir çatı altında birleştiren güçlü bir yönetim sistemidir. 
+                  </p>
+                  <p className="text-sm leading-relaxed text-white/60 mb-6 font-light font-sans">
+                    Bu panel sayesinde yetkililer; saat modellerinin görsel medya yönetimini, teknik detaylarını, stok durumlarını ("YAYINDA", "ARŞİV" vb.) ve özel HSL bazlı fiyat skalalarını zahmetsizce güncelleyebilir. Sisteme eklenen her yeni ürün, sanal showroom üzerinde anında canlıya alınarak VIP müşterilerin beğenisine sunulur.
+                  </p>
+                  <div className="flex flex-wrap gap-4 mt-8">
+                    <div className="flex flex-col border border-white/5 bg-white/[0.01] px-5 py-3 rounded-xl min-w-[140px]">
+                      <span className="text-xs text-white/40 uppercase tracking-wider">Dynamic Inventory</span>
+                      <span className="text-lg font-bold text-white mt-1 display-font">Real-Time Sync</span>
+                    </div>
+                    <div className="flex flex-col border border-white/5 bg-white/[0.01] px-5 py-3 rounded-xl min-w-[140px]">
+                      <span className="text-xs text-white/40 uppercase tracking-wider">Administration</span>
+                      <span className="text-lg font-bold text-[#C5A572] mt-1 display-font">1-Click Publish</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Stunning Realistic Mockup of the CRM */}
+                <div className="lg:col-span-7 relative group">
+                  {/* Glowing behind the mockup */}
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-[#C5A572]/10 to-transparent rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-2 shadow-2xl transition-all duration-500 group-hover:border-[#C5A572]/20">
+                    <img 
+                      src={watchCrmPanel} 
+                      alt="KBCHRONO Custom CRM Dashboard Panel" 
+                      className="w-full h-auto object-cover rounded-xl filter contrast-[1.05] brightness-95 shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
