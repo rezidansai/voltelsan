@@ -427,10 +427,10 @@ const CaseStudy = () => {
                     KBCHRONO Bespoke CRM Panel
                   </h3>
                   <p className="text-sm leading-relaxed text-white/60 mb-6 font-light font-sans">
-                    KBCHRONO için özel olarak sıfırdan tasarlanan ve geliştirilen **Merkezi CRM Paneli**, lüks saat envanterinin ve koleksiyonların tüm yönetim süreçlerini tek bir çatı altında birleştiren güçlü bir yönetim sistemidir. 
+                    Designed and developed from scratch specifically for KBCHRONO, the Central CRM Panel is a powerful management system that unifies all management processes for luxury watch inventories and collections under one roof.
                   </p>
                   <p className="text-sm leading-relaxed text-white/60 mb-6 font-light font-sans">
-                    Bu panel sayesinde yetkililer; saat modellerinin görsel medya yönetimini, teknik detaylarını, stok durumlarını ("YAYINDA", "ARŞİV" vb.) ve özel HSL bazlı fiyat skalalarını zahmetsizce güncelleyebilir. Sisteme eklenen her yeni ürün, sanal showroom üzerinde anında canlıya alınarak VIP müşterilerin beğenisine sunulur.
+                    Through this panel, authorized personnel can effortlessly update watch models' visual media management, technical details, stock status ("PUBLISHED", "ARCHIVED", etc.), and custom HSL-based pricing scales. Every new product added to the system is instantly published in the virtual showroom, making it available to VIP customers.
                   </p>
                   <div className="flex flex-wrap gap-4 mt-8">
                     <div className="flex flex-col border border-white/5 bg-white/[0.01] px-5 py-3 rounded-xl min-w-[140px]">
