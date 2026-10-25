@@ -83,8 +83,12 @@ const CaseStudy = () => {
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-foreground">
       {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/40 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
-        <Link to="/" className="display-font font-bold text-lg tracking-tight hover:opacity-80 transition-opacity">
-          PYZERION
+        <Link to="/" className="flex items-center cursor-pointer transition-transform hover:scale-105" aria-label="Voltelsan">
+          <img 
+            src="/voltelsan-logo.png" 
+            alt="Voltelsan Logo" 
+            className="h-7 w-auto object-contain" 
+          />
         </Link>
         <Link
           to="/"
@@ -517,7 +521,7 @@ const CaseStudy = () => {
 
       {/* Minimal Footer */}
       <footer className="py-12 border-t border-border/40 text-center text-xs text-muted-foreground">
-        <p>© {new Date().getFullYear()} Pyzerion. All rights reserved. Absolute brand authority and precision.</p>
+        <p>© {new Date().getFullYear()} Voltelsan. All rights reserved. Absolute brand authority and precision.</p>
       </footer>
     </main>
   );
