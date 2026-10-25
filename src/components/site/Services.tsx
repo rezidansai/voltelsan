@@ -1,31 +1,34 @@
 import { Bot, Database, LayoutDashboard } from "lucide-react";
-
-const services = [
-  {
-    icon: Bot,
-    title: "AI Automation",
-    desc: "Voice assistants and response systems that handle the volume your team can't — fluently, contextually, and on-brand.",
-  },
-  {
-    icon: Database,
-    title: "Custom CRM Development",
-    desc: "Pipelines built around your real workflow, not a template. From lead capture to revenue, fully owned by you.",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Admin Panel Design",
-    desc: "Dashboards that make complex operations feel obvious. Built for speed, clarity, and confident decisions.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const Services = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Bot,
+      title: t.services.aiTitle,
+      desc: t.services.aiDesc,
+    },
+    {
+      icon: Database,
+      title: t.services.crmTitle,
+      desc: t.services.crmDesc,
+    },
+    {
+      icon: LayoutDashboard,
+      title: t.services.adminTitle,
+      desc: t.services.adminDesc,
+    },
+  ];
+
   return (
     <section id="services" className="relative border-y border-border bg-background py-32 md:py-44">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-20 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">What I do</p>
+          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">{t.services.tag}</p>
           <h2 className="display-font text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Eliminate inefficiencies.<br />Scale operations.
+            {t.services.title}<br />{t.services.titleSub}
           </h2>
         </div>
 

@@ -1,14 +1,18 @@
+import { useLanguage } from "@/context/LanguageContext";
+
 const stack = ["Next.js", "Supabase", "Vercel", "Node.js", "PostgreSQL", "TypeScript", "OpenAI", "Tailwind"];
 
 const TechStack = () => {
+  const { t } = useLanguage();
   const items = [...stack, ...stack];
+
   return (
     <section id="stack" className="py-32 md:py-44">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-16 max-w-3xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">The Stack</p>
+          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">{t.stack.tag}</p>
           <h2 className="display-font text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Tools chosen for longevity, not hype.
+            {t.stack.title}
           </h2>
         </div>
       </div>

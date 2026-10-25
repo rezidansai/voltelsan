@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { projects } from "@/data/projects";
+import { getLocalizedProjects } from "@/data/projects";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ScrollReveal = ({ children, direction }: { children: React.ReactNode; direction: "left" | "right" }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,24 +57,27 @@ const ScrollReveal = ({ children, direction }: { children: React.ReactNode; dire
 };
 
 const Portfolio = () => {
+  const { t, language } = useLanguage();
+  const localizedProjects = getLocalizedProjects(language);
+
   return (
     <section id="work" className="relative py-32 md:py-44">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">Selected Work</p>
+            <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">{t.portfolio.tag}</p>
             <h2 className="display-font max-w-2xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-              Eliminate cumbersome processes. Build smart systems.
+              {t.portfolio.title}
             </h2>
           </div>
           <p className="max-w-md text-sm text-muted-foreground">
-            Stop wasting time on cumbersome processes.
+            {t.portfolio.desc}
           </p>
         </div>
 
         <div className="grid gap-6 md:gap-8">
-          {projects.map((p, i) => (
-            <ScrollReveal key={p.title} direction={i % 2 === 0 ? "right" : "left"}>
+          {localizedProjects.map((p, i) => (
+            <ScrollReveal key={p.slug} direction={i % 2 === 0 ? "right" : "left"}>
               <article
                 className="group relative grid overflow-hidden rounded-3xl border border-border bg-card transition-all duration-500 hover:border-primary/40 hover:shadow-elegant md:grid-cols-12"
               >
@@ -115,7 +119,7 @@ const Portfolio = () => {
                     to={`/case-studies/${p.slug}`}
                     className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer group/link animate-fade-in"
                   >
-                    Case study
+                    {t.portfolio.caseStudy}
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                   </Link>
                 </div>

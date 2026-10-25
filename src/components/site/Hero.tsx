@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import pyzerionVideo from "@/assets/pyzerion.mp4";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
-  const phrases = [
-    "Intelligent Systems for Complex Operational Processes.",
-    "Intelligent Systems for Next-Gen Enterprise Brands.",
-    "Intelligent Systems for Seamless Capital Automation."
-  ];
+  const { t, language } = useLanguage();
+  const phrases = t.hero.phrases;
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -15,7 +13,14 @@ const Hero = () => {
   const [isPausing, setIsPausing] = useState(false);
 
   useEffect(() => {
-    const fullText = phrases[currentPhraseIndex];
+    setCurrentText("");
+    setCurrentPhraseIndex(0);
+    setIsDeleting(false);
+    setIsPausing(false);
+  }, [language]);
+
+  useEffect(() => {
+    const fullText = phrases[currentPhraseIndex] || phrases[0];
     
     if (isPausing) {
       const timeout = setTimeout(() => {
@@ -44,29 +49,21 @@ const Hero = () => {
 
     const timer = setTimeout(tick, isDeleting ? 30 : 80);
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, isPausing, currentPhraseIndex]);
+  }, [currentText, isDeleting, isPausing, currentPhraseIndex, phrases]);
 
-  let s1 = "";
-  let s2 = "";
-  let s3 = "";
-  let s4 = "";
+  // Compute normal text and gradient highlight text
+  const fullText = phrases[currentPhraseIndex] || phrases[0];
+  const gradientStartIndex = language === "tr" 
+    ? fullText.indexOf("Akıllı") 
+    : (currentPhraseIndex === 0 ? 32 : currentPhraseIndex === 1 ? 33 : 33);
 
-  if (currentPhraseIndex === 0) {
-    s1 = currentText.slice(0, Math.min(currentText.length, 20));
-    s2 = currentText.length > 20 ? currentText.slice(20, Math.min(currentText.length, 32)) : "";
-    s3 = currentText.length > 32 ? currentText.slice(32, Math.min(currentText.length, 44)) : "";
-    s4 = currentText.length > 44 ? currentText.slice(44, Math.min(currentText.length, 54)) : "";
-  } else if (currentPhraseIndex === 1) {
-    s1 = currentText.slice(0, Math.min(currentText.length, 20));
-    s2 = currentText.length > 20 ? currentText.slice(20, Math.min(currentText.length, 33)) : "";
-    s3 = currentText.length > 33 ? currentText.slice(33, Math.min(currentText.length, 44)) : "";
-    s4 = currentText.length > 44 ? currentText.slice(44, Math.min(currentText.length, 51)) : "";
-  } else {
-    s1 = currentText.slice(0, Math.min(currentText.length, 20));
-    s2 = currentText.length > 20 ? currentText.slice(20, Math.min(currentText.length, 33)) : "";
-    s3 = currentText.length > 33 ? currentText.slice(33, Math.min(currentText.length, 41)) : "";
-    s4 = currentText.length > 41 ? currentText.slice(41, Math.min(currentText.length, 52)) : "";
-  }
+  const normalPart = gradientStartIndex !== -1 && currentText.length > gradientStartIndex
+    ? currentText.slice(0, gradientStartIndex)
+    : currentText;
+
+  const gradientPart = gradientStartIndex !== -1 && currentText.length > gradientStartIndex
+    ? currentText.slice(gradientStartIndex)
+    : "";
 
   return (
     <section id="top" className="relative isolate overflow-hidden min-h-screen flex flex-col justify-center pt-32 pb-16 md:pt-40 md:pb-24">
@@ -84,26 +81,22 @@ const Hero = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="mb-8 inline-flex animate-fade-in items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-glow-pulse" />
-          Intelligent Systems for Modern Brands
+          {t.hero.badge}
         </div>
 
-        <h1 className="display-font animate-fade-in text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-          {s1}
-          {s2 && <br className="hidden sm:block" />}
-          {s2}
-          {s3 && <br className="hidden sm:block" />}
-          {s3}
-          {s4 && (
-            <span className="text-gradient">{s4}</span>
+        <h1 className="display-font animate-fade-in text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem] min-h-[3.2em]">
+          <span>{normalPart}</span>
+          {gradientPart && (
+            <span className="text-gradient ml-1">{gradientPart}</span>
           )}
           <span className="ml-1.5 inline-block w-[4px] h-[0.85em] align-middle bg-primary animate-caret-blink" />
         </h1>
 
         <p
-          className="mt-8 max-w-2xl animate-fade-in text-base text-muted-foreground md:text-lg"
+          className="mt-8 max-w-2xl animate-fade-in text-base text-muted-foreground md:text-lg leading-relaxed"
           style={{ animationDelay: "120ms" }}
         >
-          Enterprise-level AI-powered response systems and custom CRMs. Designed for companies that don't want to be slowed down by legacy management systems.
+          {t.hero.desc}
         </p>
 
         <div className="mt-12 flex animate-fade-in flex-wrap items-center gap-4" style={{ animationDelay: "240ms" }}>
@@ -111,14 +104,14 @@ const Hero = () => {
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.03]"
           >
-            Get Started
+            {t.hero.getStarted}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <a
             href="#work"
             className="inline-flex items-center gap-2 rounded-full border border-white px-7 py-4 text-sm font-medium text-foreground transition-all duration-300 hover:bg-white hover:text-primary hover:border-white"
           >
-            View Work
+            {t.hero.viewWork}
           </a>
         </div>
       </div>

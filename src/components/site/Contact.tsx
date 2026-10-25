@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
+  const { t } = useLanguage();
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,7 +83,7 @@ const Contact = () => {
         throw new Error(`Supabase Error (${response.status}): ${parsedError}`);
       }
 
-      toast.success("Message received. I'll be in touch shortly.");
+      toast.success(t.contact.success);
       (e.target as HTMLFormElement).reset();
     } catch (err) {
       console.error(err);
@@ -96,12 +98,12 @@ const Contact = () => {
     <section id="contact" className="relative py-32 md:py-44">
       <div className="container mx-auto max-w-4xl">
         <div className="mb-16 text-center">
-          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">Let's Talk</p>
+          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-primary">{t.contact.tag}</p>
           <h2 className="display-font text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Have a system worth automating?
+            {t.contact.title}
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground">
-            Tell me about the workflow that drains your team. I respond personally within one business day.
+            {t.contact.desc}
           </p>
         </div>
 
@@ -112,7 +114,7 @@ const Contact = () => {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                Name
+                {t.contact.name}
               </label>
               <input
                 id="name"
@@ -123,7 +125,7 @@ const Contact = () => {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                Email
+                {t.contact.email}
               </label>
               <input
                 id="email"
@@ -137,7 +139,7 @@ const Contact = () => {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="company" className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-              Company
+              {t.contact.company}
             </label>
             <input
               id="company"
@@ -148,7 +150,7 @@ const Contact = () => {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-              What are you building?
+              {t.contact.message}
             </label>
             <textarea
               id="message"
@@ -164,7 +166,7 @@ const Contact = () => {
             disabled={submitting}
             className="group mt-2 inline-flex items-center justify-center gap-2 self-start rounded-full bg-gradient-primary px-7 py-4 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.03] disabled:opacity-60"
           >
-            {submitting ? "Sending…" : "Send message"}
+            {submitting ? t.contact.sending : t.contact.send}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </form>

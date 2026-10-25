@@ -24,6 +24,19 @@ export interface Project {
   architectureDesc?: string;
   featuresTitle?: string;
   featuresDesc?: string;
+  tr?: {
+    tag?: string;
+    title?: string;
+    desc?: string;
+    longDesc?: string;
+    client?: string;
+    metrics?: { value: string; label: string }[];
+    features?: { title: string; desc: string }[];
+    architecture?: { title: string; desc: string; span?: string }[];
+    architectureDesc?: string;
+    featuresTitle?: string;
+    featuresDesc?: string;
+  };
 }
 
 export const projects: Project[] = [
@@ -53,7 +66,31 @@ export const projects: Project[] = [
       { title: "OCR & Camera Sync", desc: "Synchronizes gate snapshot metadata with registered fleet license plates instantly." },
       { title: "Ledger Reconciliation", desc: "Runs scheduled ledger checks to automatically reconcile unpaid transits against pre-funded client balances." },
       { title: "Enterprise Admin Hub", desc: "A sleek, responsive dashboard designed for high-density administrative workflows and bulk report generation.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "ALTYAPI & LOJİSTİK",
+      title: "Filo Geçiş Ücreti & İhlal Portalı",
+      desc: "3. Yavuz Sultan Selim Köprüsü, Filo Müşterilerinin İhlalleri İzlemesi İçin Otoyol Geçiş Yönetim Portalı Sistemi.",
+      longDesc: "Yavuz Sultan Selim Köprüsü'nü kullanan büyük ölçekli filo operatörleri için özel olarak tasarlanmış yüksek performanslı kurumsal yönetim portalı. Ağır vasıta lojistik uyumluluğunu, geçiş ücretlendirmesini ve ihlal çözümlemelerini gerçek zamanlıya yakın kolaylaştırır.",
+      client: "İCA - Yavuz Sultan Selim Köprüsü İşletmesi",
+      metrics: [
+        { value: "0.2s", label: "Geçiş İşleme Gecikmesi" },
+        { value: "%99.98", label: "Gerçek Zamanlı Eşleşme Doğruluğu" },
+        { value: "50k+", label: "Günlük İzlenen Aktif Geçiş" }
+      ],
+      features: [
+        { title: "Gerçek Zamanlı Geçiş Takibi", desc: "Yüksek hassasiyetli telemetri ve fotoğraf kanıtı entegrasyonuyla köprü geçişlerini anında izleyin." },
+        { title: "Otomatik İhlal Uyarıları", desc: "Büyük cezaları önlemek için ödenmemiş geçiş veya ihlal durumunda filo operasyonlarını dakikalar içinde bilgilendirin." },
+        { title: "Konsolide Faturalama Motoru", desc: "Her ay binlerce mikro işlemi birleştirilmiş kurumsal muhasebe raporlarına dönüştürün." }
+      ],
+      architectureDesc: "Yerel havuzda çalışan kurumsal personelin detaylı kontrol sağlaması için tasarlanmış kusursuz sistem.",
+      architecture: [
+        { title: "Geçiş Akışı İşlemcisi", desc: "Yerel havuzdaki ihlalleri anlık izleyen portal mimarisi.", span: "md:col-span-2" },
+        { title: "OCR & Kamera Senkronizasyonu", desc: "Gişe kamera fotoğraflarını kayıtlı filo plakalarıyla anında eşleştirir." },
+        { title: "Bakiye & Mahsup Uzlaştırma", desc: "Ödenmemiş geçişleri müşteri ön ödeme bakiyeleriyle otomatik olarak denkleştiren zamanlanmış mutabakat sistemi." },
+        { title: "Kurumsal Yönetim Merkezi", desc: "Yüksek yoğunluklu idari iş akışları ve toplu raporlama için tasarlanmış modern gösterge paneli.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "yss-mapping-engine",
@@ -83,7 +120,32 @@ export const projects: Project[] = [
       { title: "Spatial Query Optimizers", desc: "A system that shows detailed routes and toll booths for travel between the European and Asian sides of Istanbul, based on selected starting and arriving locations." },
       { title: "Live Fleet Simulation Engine", desc: "A premium calculation system that instantly displays toll fees based on the toll booth." },
       { title: "Location-Based Transitions and Toll Booths", desc: "An innovative system that displays the number of lanes for both directions at barrier-controlled toll booths on a single screen; and provides quick access to the desired location in seconds thanks to its integrated search feature.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "OTOYOL ALTYAPISI",
+      title: "YSS Geçiş & Güzergah Haritalama Motoru",
+      desc: "Ücret ağlarını ve rota entegrasyonlarını görselleştiren, karmaşık otoyol sistemlerinde mutlak netlik sağlayan interaktif geçiş mimarisi.",
+      longDesc: "Yavuz Sultan Selim otoyol ağı üzerindeki çok katmanlı ücretlendirme ağlarını ve geçiş akışlarını görselleştirmek için geliştirilmiş ileri düzey coğrafi bilgi motoru. Araç hareketleri, gişeler ve lojistik paternleri üzerinde anlık harita görselleştirmesi sunar.",
+      client: "Altyapı Bakanlığı & İCA",
+      metrics: [
+        { value: "60 FPS", label: "İnteraktif Harita Yenileme Hızı" },
+        { value: "%100", label: "Coğrafi Sınır Hassasiyeti" },
+        { value: "10M+", label: "İşlenen CBS Veri Noktası" }
+      ],
+      features: [
+        { title: "İnteraktif Harita Görselleştirici", desc: "Gişelerin konumunu net bir şekilde göstererek karmaşıklığı ortadan kaldıran ve kurumsal personel için optimize edilmiş portal sistemi." },
+        { title: "Dinamik Akış Analizi", desc: "Araç sınıflandırmaları ve kademeli fiyat aralıklarına göre en uygun rotayı belirleyen mantıksal modelleme." },
+        { title: "Sanal Geçiş Bölgesi Simülasyonu", desc: "Gelecekteki ücretlendirme değişikliklerini test etmek amacıyla kilit lojistik sektörlerinde sanal geofence kurma." }
+      ],
+      architectureDesc: "Kurumsal personelin operasyonları yerel havuzdan kusursuzca yönetebilmesi için tasarlandı.",
+      featuresTitle: "Kolay Yönetilebilir Süreçler İçin İnşa Edildi",
+      architecture: [
+        { title: "Özel Mapbox Katman Modeli", desc: "Bariyerli ve serbest geçiş noktalarını haritada gösteren, seçilen gişeler arasında rota oluşturan ve hava durumunu anlık aktaran entegre kontrol sistemi.", span: "md:col-span-2" },
+        { title: "Mekânsal Sorgu Optimizasyonu", desc: "Avrupa ve Asya yakası arasındaki seyahatler için seçilen başlangıç ve varış noktalarına göre detaylı gişe ve güzergah analizi." },
+        { title: "Canlı Filo Simülasyonu", desc: "Gişe bazında geçiş ücretlerini anında hesaplayan ve gösteren akıllı hesaplama motoru." },
+        { title: "Konum Tabanlı Gişe & Şerit Yönetimi", desc: "Bariyerli gişelerdeki şerit sayılarını tek ekranda sunan ve entegre arama özelliğiyle istenilen noktaya saniyeler içinde erişim sağlayan yenilikçi sistem.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "luxury-watch-brand",
@@ -111,7 +173,30 @@ export const projects: Project[] = [
       { title: "Micro-Interaction Engine", desc: "Sophisticated event listener orchestrates precise, tactile hover sound effects and physics-based cursor feedback." },
       { title: "Ultra-Light Asset Loading", desc: "Custom pipeline optimizing massive RAW photography assets into responsive WebP slices instantly on-demand." },
       { title: "Secure VIP Gateway", desc: "A sleek, private CRM endpoint using encrypted single-use invitations to protect buyer anonymity and order values.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "İSVİÇRE YÜKSEK SAATÇİLİĞİ",
+      title: "Ayrıcalıklı Marka Altyapısı",
+      desc: "Geleneksel saatçilik sanatını kusursuz bir dijital deneyime dönüştürme. Mutlak marka otoritesi ve zarafet için inşa edilmiş özel bir vitrin.",
+      longDesc: "Üst segment saatler için özel olarak tasarlanmış, sade lüks estetiğinin dijital bir yorumu. İnteraktif, zengin tipografiyi duyarlı tasarımla birleştirerek prestij ve sanatsal ustalığı yansıtan ayrıcalıklı bir vitrin oluşturur.",
+      client: "İsviçre Haute Horlogerie Markası",
+      metrics: [
+        { value: "%100", label: "Özel Piksel Hassasiyeti" },
+        { value: "0.8s", label: "Etkileşimli Yükleme Süresi" },
+        { value: "4.8x", label: "Müşteri Oturum Süresi Artışı" }
+      ],
+      features: [
+        { title: "Haute Horlogerie Galerisi", desc: "Ultra lüks saatlerin karmaşık mekanizmalarını, el işçiliği kasalarını ve nadir kadranlarını sergilemek için tasarlanmış büyüleyici dijital alan." },
+        { title: "İnteraktif Ustalık Deneyimi", desc: "Usta zanaatkarların montaj tekniklerini adım adım sunan etkileşimli hikaye anlatımı." },
+        { title: "Prestij VIP Rezervasyon Portalı", desc: "Özel koleksiyonerler ve VIP müşteriler için geliştirilmiş şifreli rezervasyon akışı." }
+      ],
+      architecture: [
+        { title: "3D Bileşen Vitrini", desc: "İsviçre mekanik hareketlerinin yüksek poligonlu CAD modellerini gerçek zamanlı işleyen Three.js özel tuvali.", span: "md:col-span-2" },
+        { title: "Mikro Etkileşim Motoru", desc: "Hassas, dokunsal hover efektleri ve fizik tabanlı imleç geri bildirimi sağlayan gelişmiş etkileşim katmanı." },
+        { title: "Ultra Hafif Medya Yükleme", desc: "Yüksek çözünürlüklü RAW stüdyo fotoğraflarını talep anında optimize eden duyarlı WebP işleme hattı." },
+        { title: "Güvenli VIP Geçidi", desc: "Alıcı gizliliğini korumak için şifreli tek kullanımlık davetiyeler kullanan özel CRM uç noktası.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "private-charter-architecture",
@@ -139,7 +224,30 @@ export const projects: Project[] = [
       { title: "Border Control Validator", desc: "Real-time API integrations with international aviation registers and security systems to instantly confirm compliance." },
       { title: "Encrypted VIP Ledger", desc: "Private transactional system logging high-ticket charter bookings with custom privacy guarantees and client isolation." },
       { title: "Cockpit Sync Engine", desc: "Real-time updates directly piped to the crew's flight management tablets via secure low-bandwidth channels.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "KÜRESEL HAVACILIK",
+      title: "Otonom Özel Jet Kiralama Mimarisi",
+      desc: "Yönetici havacılığı ve özel jet kiralama için merkezi bir ekosistem. Karmaşık rotalama, VIP talepleri ve operasyonel uyumluluğu mutlak hassasiyetle yönetir.",
+      longDesc: "Küresel özel jet kiralama ve lüks kurumsal havacılık operasyonları için özel olarak tasarlanmış hepsi bir arada merkezi dijital ekosistem. Uçuş lojistiğini, özel VIP taleplerini ve gerçek zamanlı yasal uyumluluğu otomatikleştirir.",
+      client: "Seres Havacılık & Özel Jet Filosu",
+      metrics: [
+        { value: "%99.99", label: "Uçuş Rotalama Doğruluğu" },
+        { value: "-%35", label: "Operasyonel Koordinasyon Gecikmesi" },
+        { value: "$120M+", label: "Yönetilen VIP Kiralama Değeri" }
+      ],
+      features: [
+        { title: "Otonom Dispeç Sistemi", desc: "Uçak teknik özelliklerine göre optimum vektörleri otomatik hesaplayan akıllı uçuş rotalama sistemi." },
+        { title: "Dinamik VIP İkram & Kara Lojistiği", desc: "Yerel kara transferleri, konsiyerj hizmetleri ve ikram tercihlerini anlık pilot bildirimleriyle senkronize edin." },
+        { title: "Anında Manifesto Üretimi", desc: "Pasaport doğrulamasıyla uluslararası sınır kontrolüne tam uyumlu manifestoları saniyeler içinde oluşturun." }
+      ],
+      architecture: [
+        { title: "Otomatik Uçuş Rotası Optimize Edici", desc: "Hava durumu, ağırlık ve performans parametrelerini hesaba katan gelişmiş algoritmalarla özel jet uçuş planlarını hesaplar.", span: "md:col-span-2" },
+        { title: "Sınır Kontrol Doğrulayıcısı", desc: "Mevzuata uygunluğu anında teyit etmek için uluslararası havacılık kayıt sistemleriyle gerçek zamanlı API entegrasyonu." },
+        { title: "Şifreli VIP İşlem Defteri", desc: "Yüksek değerli kiralama rezervasyonlarını müşteri gizliliği garantisiyle kaydeden özel işlem altyapısı." },
+        { title: "Kokpit Senkronizasyon Motoru", desc: "Uçuş mürettebatının tabletlerine düşük bant genişliğinde güvenli kanallarla doğrudan canlı veri akışı sağlar.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "global-cargo-acmi",
@@ -167,7 +275,30 @@ export const projects: Project[] = [
       { title: "Active Aircrew Schedule Engine", desc: "Algorithmic compliance checks validating required rest cycles and training standards before assignation." },
       { title: "Airport Logistics Pipeline", desc: "Real-time Elasticsearch indexing tracking complex shipping manifest statuses and custom clearance details." },
       { title: "Global Wet Lease Portal", desc: "Sleek procurement portal for corporate airlines to instantly request and secure dry or wet leases for cargo fleets.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "KARGO & KİRALAMA",
+      title: "Küresel Kargo & ACMI Operasyonları",
+      desc: "Uluslararası kargo kiralama, wet lease (ACMI) hizmetleri ve mevsimsel talep optimizasyonu için yasal standartlara tam uyumlu özel lojistik platformu.",
+      longDesc: "Küresel kargo kiralama ve ACMI (Uçak, Mürettebat, Bakım ve Sigorta) operasyonlarını ölçeklendirmek, filo verimliliğini ve mutlak güvenlik standartlarını sağlamak için geliştirilmiş özel filo yönetim platformu.",
+      client: "SMEA (San Marino Executive Havacılık)",
+      metrics: [
+        { value: "0.15s", label: "Filo Müsaitlik Sorgulama Hızı" },
+        { value: "%48", label: "ACMI Kiralama Süreç Hızlanması" },
+        { value: "%99.95", label: "Yük Kapasitesi Kullanım Oranı" }
+      ],
+      features: [
+        { title: "ACMI Sözleşme Orkestratörü", desc: "Uçak, mürettebat, sigorta ve ağır bakım takvimini tek bir birleşik sözleşme zaman çizelgesinde yönetin." },
+        { title: "Ağır Kargo Yük Dağılım Hesaplayıcı", desc: "Kargo yoğunluğunu ve yerleşimini anlık olarak optimize ederek ağırlık-denge limitlerini otomatik denetleyin." },
+        { title: "Çok Merkezli Yer Operasyonları", desc: "Kargo ilerleyişini küresel havalimanları üzerinden izleyin ve uluslararası gümrük belgelerini dinamik yönetin." }
+      ],
+      architecture: [
+        { title: "Ağırlık Merkezi Çözücüsü", desc: "Fizik tabanlı model, güvenli uçak dengesi parametrelerini hesaplar ve optimum yükleme planı sunar.", span: "md:col-span-2" },
+        { title: "Mürettebat Görev Takvimi Motoru", desc: "Atama öncesinde dinlenme sürelerini ve eğitim standartlarını doğrulayan algoritmik uyumluluk denetimleri." },
+        { title: "Havalimanı Lojistik Akışı", desc: "Karmaşık sevkiyat manifestolarını ve gümrük geçiş durumlarını izleyen gerçek zamanlı Elasticsearch dizini." },
+        { title: "Küresel Wet Lease Portalı", desc: "Kurumsal havayollarının kargo filoları için dry veya wet lease taleplerini anında iletmesini sağlayan tedarik portalı.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "aircraft-engine-expert",
@@ -195,7 +326,30 @@ export const projects: Project[] = [
       { title: "Turbine Telemetry Indexer", desc: "Aggregates life-limited parts cycles to forecast next mandatory engine overhauls automatically." },
       { title: "Encrypted Escrow Room", desc: "Secure digital negotiation space utilizing military-grade encryption to safeguard corporate documents and transaction details." },
       { title: "Parts Depot Sync Protocol", desc: "API integrations connecting international warehouse inventories for immediate, real-time parts availability checking.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "UÇAK & MOTOR TİCARETİ",
+      title: "Uçak & Türbin Motor Uzmanı",
+      desc: "Dünya çapında uçak alımı, türbin motoru işlemleri ve küresel yedek parça ticareti üzerine uzmanlaşmış birinci sınıf aracılık ve danışmanlık platformu.",
+      longDesc: "Özel jet alımları, karmaşık motor işlemleri ve küresel yedek parça lojistiği için özel olarak geliştirilmiş, kurumsal alıcı ve satıcılara mutlak güven sunan danışmanlık ve aracılık sistemi.",
+      client: "Uluslararası Havacılık Danışmanlık Grubu",
+      metrics: [
+        { value: "0.08s", label: "Türbin Karşılaştırma Hızı" },
+        { value: "$450M+", label: "Yönetilen Aktif Varlık Değeri" },
+        { value: "%100", label: "İşlem Gizlilik Güvencesi" }
+      ],
+      features: [
+        { title: "Motor Yaşam Döngüsü Analitiği", desc: "Kompresör, türbin ve yardımcı parça saatlerini fabrika çıkışından son bakıma kadar detaylıca inceleyin." },
+        { title: "Küresel Tedarik Kataloğu", desc: "Uluslararası depolardaki sertifikalı türbin parçalarını anında bulmak için ultra hızlı arama dizini." },
+        { title: "Özel Alım-Satım Odası", desc: "Milyonlarca dolarlık iş jeti anlaşmaları için dahili dijital emanet uyumluluğuna sahip yüksek güvenlikli işlem alanı." }
+      ],
+      architecture: [
+        { title: "Parça Geçmişi Takip Motoru", desc: "Geçmiş bakım kayıtlarını hızla işleyerek doğrulanmış varlık zaman çizelgeleri oluşturan Rust destekli arka uç.", span: "md:col-span-2" },
+        { title: "Türbin Telemetri İndeksleyici", desc: "Sınırlı ömürlü parça döngülerini birleştirerek bir sonraki zorunlu motor revizyonunu otomatik tahmin eder." },
+        { title: "Şifreli Emanet Odası", desc: "Kurumsal belgeleri ve işlem detaylarını korumak için askeri düzeyde şifreleme kullanan güvenli dijital müzakere alanı." },
+        { title: "Yedek Parça Depo Senkronizasyonu", desc: "Gerçek zamanlı parça mevcudiyetini kontrol etmek için uluslararası depo envanterlerini bağlayan API entegrasyonu.", span: "md:col-span-2" }
+      ]
+    }
   },
   {
     slug: "kraftox-ai-assistant",
@@ -223,6 +377,53 @@ export const projects: Project[] = [
       { title: "Dynamic Prompt Orchestrator", desc: "Injects live system variables and historic conversation context into the LLM logic in under 5 milliseconds." },
       { title: "Vector Embeddings Index", desc: "Retrieves technical product details and corporate guidelines using supercharged semantic database queries." },
       { title: "Enterprise Control Panel", desc: "Sleek, real-time dashboard displaying current call metrics, sentiment waves, and automated call transcriptions.", span: "md:col-span-2" }
-    ]
+    ],
+    tr: {
+      tag: "YAPAY ZEKA OTOMASYONU",
+      title: "Kraftox Yapay Zeka Sesli Asistanı",
+      desc: "Müşteri etkileşimlerini akıcı, bağlamsal ve tamamen marka kimliğine uygun olarak yüksek hacimde yönetmek için tasarlanmış yeni nesil gerçek zamanlı konuşma yapay zekası.",
+      longDesc: "On binlerce eşzamanlı sesli aramayı ve müşteri destek oturumunu bağlamsal, akıcı ve güvenli bir şekilde yönetebilen gelişmiş gerçek zamanlı konuşma yapay zekası ses platformu.",
+      client: "Kraftox AI Ekibi",
+      metrics: [
+        { value: "0.22s", label: "Konuşma Gecikmesi" },
+        { value: "%97.5", label: "İlk Aramada Çözüm Oranı" },
+        { value: "10k+", label: "Eşzamanlı Yapay Zeka Görüşmesi" }
+      ],
+      features: [
+        { title: "Ultra Düşük Gecikmeli Ses Çekirdeği", desc: "Görüşmelerin doğal, duyarlı ve kesintisiz hissettirmesi için WebRTC üzerinden ses akışı sağlar." },
+        { title: "Bağlam Farkındalığına Sahip Ajan Matrisi", desc: "Doğru marka kurallarını, ürün veritabanlarını ve müşteri kayıtlarını dinamik olarak otomatik yükler." },
+        { title: "Canlı Duygu Analizi Yöneticisi", desc: "Müşteri memnuniyetsizliğini tespit eden ve gerektiğinde çağrıyı canlı desteğe kusursuz aktaran gerçek zamanlı ton analizi." }
+      ],
+      architecture: [
+        { title: "WebRTC Ses İletim Hattı", desc: "Ultra düşük gecikmeyle çift yönlü yüksek kaliteli ses akışlarını doğrudan konuşma tanıma model kümelerine iletir.", span: "md:col-span-2" },
+        { title: "Dinamik Prompt Orkestratörü", desc: "Canlı sistem değişkenlerini ve geçmiş konuşma bağlamını 5 milisaniyenin altında LLM mantığına aktarır." },
+        { title: "Vektör Gömme (Embedding) Dizini", desc: "Gelişmiş semantik veritabanı sorgularıyla teknik ürün detaylarını ve kurumsal kuralları anında çeker." },
+        { title: "Kurumsal Kontrol Paneli", desc: "Anlık çağrı metriklerini, duygu dalgalarını ve otomatik çağrı dökümlerini gösteren modern gösterge paneli.", span: "md:col-span-2" }
+      ]
+    }
   }
 ];
+
+export const getLocalizedProject = (project: Project, lang: 'tr' | 'en'): Project => {
+  if (lang === 'tr' && project.tr) {
+    return {
+      ...project,
+      tag: project.tr.tag || project.tag,
+      title: project.tr.title || project.title,
+      desc: project.tr.desc || project.desc,
+      longDesc: project.tr.longDesc || project.longDesc,
+      client: project.tr.client || project.client,
+      metrics: project.tr.metrics || project.metrics,
+      features: project.tr.features || project.features,
+      architecture: project.tr.architecture || project.architecture,
+      architectureDesc: project.tr.architectureDesc || project.architectureDesc,
+      featuresTitle: project.tr.featuresTitle || project.featuresTitle,
+      featuresDesc: project.tr.featuresDesc || project.featuresDesc,
+    };
+  }
+  return project;
+};
+
+export const getLocalizedProjects = (lang: 'tr' | 'en'): Project[] => {
+  return projects.map((p) => getLocalizedProject(p, lang));
+};

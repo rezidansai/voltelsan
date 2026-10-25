@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-
-const links = [
-  { href: "#work", label: "Work" },
-  { href: "#services", label: "Services" },
-  { href: "#stack", label: "Stack" },
-  { href: "#contact", label: "Contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitch from "@/components/site/LanguageSwitch";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
+
+  const links = [
+    { href: "#work", label: t.nav.work },
+    { href: "#services", label: t.nav.services },
+    { href: "#stack", label: t.nav.stack },
+    { href: "#contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -58,12 +61,15 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <a
-          href="#contact"
-          className="rounded-full bg-foreground px-4 py-2 text-xs font-medium text-background transition-transform hover:scale-[1.03]"
-        >
-          Get Started
-        </a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitch />
+          <a
+            href="#contact"
+            className="rounded-full bg-foreground px-4 py-2 text-xs font-medium text-background transition-transform hover:scale-[1.03]"
+          >
+            {t.nav.getStarted}
+          </a>
+        </div>
       </nav>
     </header>
   );

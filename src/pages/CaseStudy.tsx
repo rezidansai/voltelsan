@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Cpu, Layers, HardDrive, Terminal, ChevronDown } from "lucide-react";
-import { projects } from "@/data/projects";
+import { projects, getLocalizedProject } from "@/data/projects";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitch from "@/components/site/LanguageSwitch";
 
 import watchApGreen from "@/assets/watch_ap_green.png";
 import watchRmBlue from "@/assets/watch_rm_blue.png";
@@ -39,9 +41,11 @@ const watches = [
 const CaseStudy = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
 
-  // Find project based on slug
-  const project = projects.find((p) => p.slug === slug);
+  // Find project based on slug and localize
+  const rawProject = projects.find((p) => p.slug === slug);
+  const project = rawProject ? getLocalizedProject(rawProject, language) : undefined;
 
   // Scroll to top on mount
   useEffect(() => {
@@ -52,14 +56,18 @@ const CaseStudy = () => {
   if (!project) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 text-center">
-        <h1 className="display-font text-5xl font-semibold md:text-7xl">Project Not Found</h1>
-        <p className="mt-6 text-muted-foreground">The case study you are looking for does not exist.</p>
+        <h1 className="display-font text-5xl font-semibold md:text-7xl">
+          {language === "tr" ? "Proje Bulunamadı" : "Project Not Found"}
+        </h1>
+        <p className="mt-6 text-muted-foreground">
+          {language === "tr" ? "Aradığınız vaka analizi mevcut değil." : "The case study you are looking for does not exist."}
+        </p>
         <Link
           to="/"
           className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Projects
+          {t.caseStudy.backToProjects}
         </Link>
       </div>
     );
@@ -90,13 +98,16 @@ const CaseStudy = () => {
             className="h-7 w-auto object-contain" 
           />
         </Link>
-        <Link
-          to="/"
-          className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-          Back to Projects
-        </Link>
+        <div className="flex items-center gap-4">
+          <LanguageSwitch />
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            {t.caseStudy.backToProjects}
+          </Link>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -144,7 +155,7 @@ const CaseStudy = () => {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#C5A572] hover:bg-[#b09062] px-6 py-3 text-sm font-semibold text-black shadow-[0_4px_20px_rgba(197,165,114,0.3)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                <span>Visit Live Platform</span>
+                <span>{t.caseStudy.visitLivePlatform}</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             )}
@@ -155,7 +166,7 @@ const CaseStudy = () => {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary/80 px-6 py-3 text-sm font-semibold text-black shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                <span>Visit Live Platform</span>
+                <span>{t.caseStudy.visitLivePlatform}</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             )}
@@ -166,7 +177,7 @@ const CaseStudy = () => {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary/80 px-6 py-3 text-sm font-semibold text-black shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                <span>Visit Live Platform</span>
+                <span>{t.caseStudy.visitLivePlatform}</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             )}
@@ -177,7 +188,7 @@ const CaseStudy = () => {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary/80 px-6 py-3 text-sm font-semibold text-black shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                <span>Visit Live Platform</span>
+                <span>{t.caseStudy.visitLivePlatform}</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             )}
@@ -188,7 +199,7 @@ const CaseStudy = () => {
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary/80 px-6 py-3 text-sm font-semibold text-black shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:scale-105 active:scale-95 transition-all duration-300"
               >
-                <span>Visit Live Platform</span>
+                <span>{t.caseStudy.visitLivePlatform}</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             )}
@@ -204,7 +215,7 @@ const CaseStudy = () => {
             {/* Left: Summary */}
             <div className="md:col-span-7 flex flex-col justify-between">
               <div>
-                <h2 className="text-xs uppercase tracking-[0.2em] text-primary mb-6 font-semibold">Executive Summary</h2>
+                <h2 className="text-xs uppercase tracking-[0.2em] text-primary mb-6 font-semibold">{t.caseStudy.executiveSummary}</h2>
                 <p className="display-font text-2xl md:text-3xl font-medium leading-relaxed text-white">
                   {project.longDesc}
                 </p>
@@ -212,7 +223,7 @@ const CaseStudy = () => {
               
               {/* Tech Stack list */}
               <div className="mt-12">
-                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-4 font-semibold">Tech Stack</h3>
+                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-4 font-semibold">{t.caseStudy.techStack}</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
                     <span
@@ -231,14 +242,14 @@ const CaseStudy = () => {
               
               {/* Quick Specs */}
               <div className="rounded-3xl border border-border bg-card/30 p-8 flex flex-col gap-6">
-                <h3 className="text-xs uppercase tracking-[0.15em] text-primary font-semibold">Project Details</h3>
+                <h3 className="text-xs uppercase tracking-[0.15em] text-primary font-semibold">{t.caseStudy.projectDetails}</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <span className="block text-xs text-muted-foreground uppercase tracking-wider">Client</span>
+                    <span className="block text-xs text-muted-foreground uppercase tracking-wider">{t.caseStudy.client}</span>
                     <span className="block text-sm font-medium text-white mt-1">{project.client}</span>
                   </div>
                   <div>
-                    <span className="block text-xs text-muted-foreground uppercase tracking-wider">Timeline</span>
+                    <span className="block text-xs text-muted-foreground uppercase tracking-wider">{t.caseStudy.timeline}</span>
                     <span className="block text-sm font-medium text-white mt-1">{project.year}</span>
                   </div>
                 </div>
@@ -271,9 +282,9 @@ const CaseStudy = () => {
       <section className="py-24 border-t border-border/40 bg-card/10">
         <div className="container mx-auto max-w-6xl px-6">
           <div className="max-w-3xl mb-16">
-            <span className="text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold">System Architecture</span>
+            <span className="text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold">{t.caseStudy.systemArchitecture}</span>
             <h2 className="display-font text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-white">
-              Bespoke Operational Modules
+              {project.architectureDesc ? t.caseStudy.architectureTitle : "Bespoke Operational Modules"}
             </h2>
             <p className="mt-4 text-muted-foreground">
               {project.architectureDesc || "An intricate breakdown of the proprietary back-end systems and interfaces driving absolute authority."}
@@ -474,12 +485,12 @@ const CaseStudy = () => {
             
             {/* Left: Section Header */}
             <div className="md:col-span-4">
-              <span className="text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold">Key Capabilities</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-primary mb-4 block font-semibold">{t.caseStudy.coreFeatures}</span>
               <h2 className="display-font text-3xl md:text-4xl font-semibold leading-tight tracking-tight text-white">
-                {project.featuresTitle || "Engineered for Absolute Precision"}
+                {project.featuresTitle || (language === "tr" ? "Üstün Hassasiyet İçin İnşa Edildi" : "Engineered for Absolute Precision")}
               </h2>
               <p className="mt-4 text-muted-foreground">
-                {project.featuresDesc || "We design fully autonomous platforms that scale with deep operational efficiency."}
+                {project.featuresDesc || (language === "tr" ? "Operasyonel derinlik ve verimlilik sağlayan otonom platformlar geliştiriyoruz." : "We design fully autonomous platforms that scale with deep operational efficiency.")}
               </p>
             </div>
 
@@ -506,14 +517,14 @@ const CaseStudy = () => {
       <section className="py-32 border-t border-border/40 bg-gradient-to-b from-transparent to-card/10 text-center">
         <div className="container mx-auto max-w-4xl px-6">
           <h2 className="display-font text-3xl md:text-5xl font-semibold text-white mb-8">
-            Interested in scaling your systems?
+            {t.caseStudy.scaleCtaTitle}
           </h2>
           <Link
             to="/"
             className="group inline-flex items-center gap-3 rounded-full border border-primary/50 bg-primary/10 hover:bg-primary/20 px-8 py-4 text-sm font-medium text-primary hover:text-white transition-all duration-500 hover:shadow-glow"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-2" />
-            Back to All Projects
+            {t.caseStudy.backToAll}
             <ArrowUpRight className="h-4 w-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
           </Link>
         </div>
@@ -521,7 +532,7 @@ const CaseStudy = () => {
 
       {/* Minimal Footer */}
       <footer className="py-12 border-t border-border/40 text-center text-xs text-muted-foreground">
-        <p>© {new Date().getFullYear()} Voltelsan. All rights reserved. Absolute brand authority and precision.</p>
+        <p>© {new Date().getFullYear()} {t.caseStudy.footerCopyright}</p>
       </footer>
     </main>
   );
