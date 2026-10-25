@@ -35,10 +35,14 @@ const Navbar = () => {
         <a 
           href="/" 
           onClick={scrollToTop} 
-          className="flex items-center gap-2 text-sm font-semibold tracking-tight cursor-pointer"
+          className="flex items-center cursor-pointer transition-transform hover:scale-105"
+          aria-label="Voltelsan"
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-primary shadow-glow animate-glow-pulse" />
-          <span className="display-font">Pyzerion<span className="text-primary">.</span></span>
+          <img 
+            src="/voltelsan-logo.png" 
+            alt="Voltelsan Logo" 
+            className="h-7 w-auto object-contain" 
+          />
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
