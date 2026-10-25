@@ -46,7 +46,7 @@ voltelsan/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/buyukbastech/voltelsan.git
+   git clone https://github.com/rezidansai/voltelsan.git
    cd voltelsan
    ```
 
