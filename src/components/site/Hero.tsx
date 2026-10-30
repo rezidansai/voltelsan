@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import pyzerionVideo from "@/assets/pyzerion.mp4";
+import heroVideo from "@/assets/pyzerion.mp4";
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -75,7 +75,7 @@ const Hero = () => {
         playsInline
         className="absolute inset-0 -z-10 h-full w-full object-cover opacity-90"
       >
-        <source src={pyzerionVideo} type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
 
       <div className="container mx-auto max-w-6xl">

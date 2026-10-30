@@ -31,6 +31,29 @@ export interface TranslationDictionary {
     crmDesc: string;
     adminTitle: string;
     adminDesc: string;
+    webTitle: string;
+    webDesc: string;
+    mobileTitle: string;
+    mobileDesc: string;
+    ecomTitle: string;
+    ecomDesc: string;
+    electricalTitle: string;
+    electricalDesc: string;
+    satelliteTitle: string;
+    satelliteDesc: string;
+    upsTitle: string;
+    upsDesc: string;
+    installationTitle: string;
+    installationDesc: string;
+    cablingTitle: string;
+    cablingDesc: string;
+    transformerTitle: string;
+    transformerDesc: string;
+    groundingTitle: string;
+    groundingDesc: string;
+    panelsTitle: string;
+    panelsDesc: string;
+    contactCta: string;
   };
   stack: {
     tag: string;
@@ -113,6 +136,18 @@ export const translations: Record<Language, TranslationDictionary> = {
       crmDesc: "Hazır şablonlar yerine, doğrudan gerçek iş akışınız etrafında tasarlanmış süreçler. İlk temas anından gelire kadar tamamen size ait altyapı.",
       adminTitle: "Yönetim Paneli Tasarımı",
       adminDesc: "Karmaşık operasyonları anında berraklaştıran kontrol panelleri. Hız, netlik ve kendinden emin kararlar için geliştirildi.",
+      webTitle: "Web Sitesi Geliştirme", webDesc: "Markanıza uygun, hızlı ve kullanıcı dostu web deneyimleri.",
+      mobileTitle: "Mobil Uygulama Geliştirme", mobileDesc: "İş süreçlerinizi her yerden erişilebilir kılan iOS ve Android uygulamaları.",
+      ecomTitle: "E-Ticaret Çözümleri", ecomDesc: "Ürünlerinizi kolayca yönetebileceğiniz güvenli ve ölçeklenebilir satış altyapıları.",
+      electricalTitle: "Elektrik Arıza, Bakım ve Onarım", electricalDesc: "Ev, apartman, iş yeri ve sahalarda hızlı arıza tespiti ve güvenli çözüm.",
+      satelliteTitle: "Uydu ve İnternet Sistemleri", satelliteDesc: "Uydu ve internet altyapılarında kurulum, bakım, arıza tespiti ve onarım.",
+      upsTitle: "UPS Sistemleri", upsDesc: "Kesintisiz güç kaynaklarında kurulum, bakım, akü kontrolü ve arıza desteği.",
+      installationTitle: "Enerji Tesisatı", installationDesc: "Daire, dükkân, site ve iş yerleri için yeni tesisat ve enerji hattı çekimi.",
+      cablingTitle: "Kablo ve Saha İşleri", cablingDesc: "Yer altı kablo, havai hat ve saha kablolama uygulamaları.",
+      transformerTitle: "Trafo ve OG Sistemleri", transformerDesc: "Trafo ve orta gerilim enerji sistemlerinde bakım, onarım ve arıza desteği.",
+      groundingTitle: "Topraklama İşleri", groundingDesc: "Can ve ekipman güvenliği için profesyonel topraklama uygulamaları.",
+      panelsTitle: "Elektrik Panoları", panelsDesc: "Pano kurulumu, düzenleme, arıza, periyodik bakım ve onarım hizmetleri.",
+      contactCta: "Bu hizmet için yazın",
     },
     stack: {
       tag: "Teknoloji Altyapısı",
@@ -193,6 +228,18 @@ export const translations: Record<Language, TranslationDictionary> = {
       crmDesc: "Pipelines built around your real workflow, not a template. From lead capture to revenue, fully owned by you.",
       adminTitle: "Admin Panel Design",
       adminDesc: "Dashboards that make complex operations feel obvious. Built for speed, clarity, and confident decisions.",
+      webTitle: "Website Development", webDesc: "Fast, user friendly web experiences tailored to your brand.",
+      mobileTitle: "Mobile App Development", mobileDesc: "iOS and Android apps that keep your business workflows accessible anywhere.",
+      ecomTitle: "E-commerce Solutions", ecomDesc: "Secure, scalable sales platforms that make product management simple.",
+      electricalTitle: "Electrical Faults, Maintenance & Repair", electricalDesc: "Fast fault detection and safe solutions for homes, apartments, businesses, and sites.",
+      satelliteTitle: "Satellite & Internet Systems", satelliteDesc: "Installation, maintenance, fault detection, and repair for satellite and internet infrastructure.",
+      upsTitle: "UPS Systems", upsDesc: "Installation, maintenance, battery checks, and fault support for uninterruptible power supplies.",
+      installationTitle: "Electrical Installations", installationDesc: "New electrical installations and power line runs for homes, shops, residential sites, and businesses.",
+      cablingTitle: "Cabling & Field Works", cablingDesc: "Underground cable, overhead line, and on-site cabling work.",
+      transformerTitle: "Transformer & Medium Voltage Systems", transformerDesc: "Maintenance, repair, and fault support for transformer and medium voltage power systems.",
+      groundingTitle: "Grounding Works", groundingDesc: "Professional grounding applications to protect people and equipment.",
+      panelsTitle: "Electrical Panels", panelsDesc: "Panel installation, organization, fault repair, periodic maintenance, and servicing.",
+      contactCta: "Ask about this service",
     },
     stack: {
       tag: "The Stack",
